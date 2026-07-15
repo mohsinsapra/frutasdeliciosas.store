@@ -406,3 +406,16 @@ document.querySelectorAll(".faq-item").forEach(item => {
     if (hayAnime && !reduceMotion) anime({ targets: msg, translateY: [8, 0], opacity: [0, 1], duration: 450, easing: "easeOutQuad" });
   });
 })();
+
+/* ===== Frutas en órbita: tamaño y deriva aleatorios ===== */
+(() => {
+  const rand = (min, max) => min + Math.random() * (max - min);
+  document.querySelectorAll(".orbita .sat").forEach(sat => {
+    sat.style.setProperty("--sat-size", rand(1.5, 2.9).toFixed(2) + "rem");
+    if (reduceMotion) return;
+    sat.style.setProperty("--float-dur", rand(3.5, 7).toFixed(2) + "s");
+    sat.style.setProperty("--float-delay", (-rand(0, 5)).toFixed(2) + "s");
+    sat.style.setProperty("--dx", rand(4, 12).toFixed(1) + "px");
+    sat.style.setProperty("--dy", rand(4, 12).toFixed(1) + "px");
+  });
+})();
