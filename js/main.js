@@ -397,6 +397,28 @@ document.querySelectorAll("img[data-emoji]").forEach(img => {
   function auto() { timer = setInterval(() => mostrar((actual + 1) % items.length), 5200); }
   puntos.forEach((p, i) => p.addEventListener("click", () => { clearInterval(timer); mostrar(i); auto(); }));
   if (!reduceMotion) auto();
+
+  /* Swipe táctil: adelante / atrás */
+  const caja = document.querySelector(".testimonios-caja");
+  if (caja) {
+    let x0 = null, y0 = null;
+    caja.addEventListener("touchstart", e => {
+      x0 = e.touches[0].clientX;
+      y0 = e.touches[0].clientY;
+    }, { passive: true });
+    caja.addEventListener("touchend", e => {
+      if (x0 === null) return;
+      const dx = e.changedTouches[0].clientX - x0;
+      const dy = e.changedTouches[0].clientY - y0;
+      x0 = y0 = null;
+      /* solo si el gesto es claramente horizontal */
+      if (Math.abs(dx) < 45 || Math.abs(dx) < Math.abs(dy) * 1.5) return;
+      clearInterval(timer);
+      mostrar(dx < 0 ? (actual + 1) % items.length
+                     : (actual - 1 + items.length) % items.length);
+      if (!reduceMotion) auto();
+    }, { passive: true });
+  }
 })();
 
 /* ============================================================

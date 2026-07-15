@@ -273,6 +273,12 @@ footer{background:var(--tinta);color:#DCE8DF;padding:64px 0 30px;margin-top:20px
   .sello-experiencia{width:104px;height:104px}
   .sello-experiencia b{font-size:1.5rem}
   .flecha-scroll{display:none}
+  /* Ofertas: scroll horizontal nativo en móvil */
+  .pista-ofertas{overflow-x:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory;padding:4px 4px 18px;scrollbar-width:none;touch-action:pan-x pan-y}
+  .pista-ofertas::-webkit-scrollbar{display:none}
+  .tarjeta-oferta{scroll-snap-align:center}
+  /* Testimonios: permitir scroll vertical mientras se detecta swipe */
+  .testimonios-caja{touch-action:pan-y}
 }
 @media (max-width:560px){
   .footer-grid{grid-template-columns:1fr}
@@ -292,9 +298,9 @@ footer{background:var(--tinta);color:#DCE8DF;padding:64px 0 30px;margin-top:20px
 .con-fondo>.container{position:relative;z-index:1}
 .palabra-fondo{position:absolute;top:4%;left:0;width:100%;font-family:'Fraunces',serif;font-size:clamp(4rem,13vw,10.5rem);font-weight:800;line-height:1;color:transparent;-webkit-text-stroke:1.5px rgba(63,164,91,.13);white-space:nowrap;pointer-events:none;user-select:none;z-index:0}
 .seccion-verde .palabra-fondo{-webkit-text-stroke-color:rgba(63,164,91,.18)}
-.blob{position:absolute;border-radius:50%;filter:blur(64px);opacity:.55;pointer-events:none;z-index:0}
-.blob-1{width:340px;height:340px;background:rgba(255,138,61,.28);top:-90px;right:-110px}
-.blob-2{width:300px;height:300px;background:var(--verde-claro);bottom:-70px;left:-110px}
+.blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.4;pointer-events:none;z-index:0}
+.blob-1{width:300px;height:300px;background:rgba(255,138,61,.35);top:-150px;right:-150px}
+.blob-2{width:280px;height:280px;background:rgba(255,216,77,.3);bottom:-160px;left:-150px}
 .valores-mini{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:26px 0 30px}
 .valor{background:#fff;border:1px solid rgba(63,164,91,.16);border-radius:16px;padding:16px 14px;box-shadow:var(--sombra);display:flex;flex-direction:column;gap:4px;transition:transform .45s cubic-bezier(.22,1,.36,1),box-shadow .45s}
 .valor:hover{transform:translateY(-6px);box-shadow:var(--sombra-fuerte)}
