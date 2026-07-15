@@ -2,6 +2,7 @@
    FRUTAS DELICIOSAS — styles.css
    ============================================================ */
 :root{
+  color-scheme:light only;
   --crema:#FFFBF2;
   --blanco:#FFFFFF;
   --verde:#3FA45B;
@@ -40,7 +41,8 @@ section{padding:96px 0;position:relative}
 .subtexto{color:var(--gris);max-width:640px;font-size:1.05rem}
 
 .btn{display:inline-flex;align-items:center;gap:.5em;padding:.85em 1.8em;border-radius:999px;font-weight:700;transition:transform .2s,box-shadow .2s;cursor:pointer;border:none;font-size:1rem}
-.btn-login{background:var(--verde);color:#fff;box-shadow:0 6px 18px rgba(63,164,91,.35)}
+.btn-login{background:linear-gradient(120deg,var(--naranja),#FF6E2E);color:#fff !important;box-shadow:0 6px 18px rgba(255,138,61,.4)}
+.nav-links a.btn-login{color:#fff !important}
 .btn-naranja{background:var(--naranja);color:#fff;box-shadow:0 6px 18px rgba(255,138,61,.35)}
 .btn-fantasma{background:transparent;border:2px solid var(--verde);color:var(--verde)}
 .btn-blanco{background:#fff;color:var(--verde)}

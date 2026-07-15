@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Frutas Deliciosas — Fruta y verdura fresca en Zaragoza</title>
 <meta name="description" content="Frutas Deliciosas: 5 sucursales en Zaragoza. Fruta, verdura y alimentos frescos de primera calidad, todos los días.">
+<meta name="color-scheme" content="light only">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -36,7 +37,7 @@
         <li><a class="btn btn-login enlace-login" href="#">Iniciar sesión</a></li>
       </ul>
     </nav>
-    <button class="hamburguesa" id="btnMenu" aria-label="Abrir menú">
+    <button type="button" class="hamburguesa" id="btnMenu" aria-label="Abrir menú">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -123,11 +124,11 @@
     <h2 class="titulo">Lo mejor de la huerta, <span class="acento-naranja">cada mañana</span></h2>
     <p class="subtexto">Seleccionamos a diario la fruta y la verdura más fresca para nuestras tiendas de Zaragoza.</p>
 
-    <div class="filtros" role="tablist">
-      <button class="filtro activo" data-cat="todo">Todo</button>
-      <button class="filtro" data-cat="fruta">Frutas</button>
-      <button class="filtro" data-cat="verdura">Verduras</button>
-      <button class="filtro" data-cat="eco">Ecológico</button>
+    <div class="filtros">
+      <button type="button" class="filtro activo" data-cat="todo">Todo</button>
+      <button type="button" class="filtro" data-cat="fruta">Frutas</button>
+      <button type="button" class="filtro" data-cat="verdura">Verduras</button>
+      <button type="button" class="filtro" data-cat="eco">Ecológico</button>
     </div>
 
     <div class="grid-productos">
@@ -286,10 +287,10 @@
       </div>
     </div>
     <div class="puntos">
-      <button class="punto activo" aria-label="Testimonio 1"></button>
-      <button class="punto" aria-label="Testimonio 2"></button>
-      <button class="punto" aria-label="Testimonio 3"></button>
-      <button class="punto" aria-label="Testimonio 4"></button>
+      <button type="button" class="punto activo" aria-label="Testimonio 1"></button>
+      <button type="button" class="punto" aria-label="Testimonio 2"></button>
+      <button type="button" class="punto" aria-label="Testimonio 3"></button>
+      <button type="button" class="punto" aria-label="Testimonio 4"></button>
     </div>
   </div>
 </section>
@@ -301,19 +302,19 @@
     <h2 class="titulo">¿Tienes dudas?</h2>
     <div class="faq-lista">
       <div class="faq-item">
-        <button class="faq-preg">¿Cuál es el horario de las tiendas?<span class="mas">+</span></button>
+        <button type="button" class="faq-preg">¿Cuál es el horario de las tiendas?<span class="mas">+</span></button>
         <div class="faq-resp"><p>Abrimos de lunes a sábado de 8:00 a 20:30, ininterrumpidamente, en nuestras 5 sucursales de Zaragoza.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-preg">¿El producto es de proximidad?<span class="mas">+</span></button>
+        <button type="button" class="faq-preg">¿El producto es de proximidad?<span class="mas">+</span></button>
         <div class="faq-resp"><p>Siempre que la temporada lo permite trabajamos con huertas de Aragón y productores nacionales. Lo que no, lo seleccionamos pieza a pieza en el mercado central.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-preg">¿Tenéis productos ecológicos?<span class="mas">+</span></button>
+        <button type="button" class="faq-preg">¿Tenéis productos ecológicos?<span class="mas">+</span></button>
         <div class="faq-resp"><p>Sí, contamos con una selección ecológica certificada: verdura de hoja, aguacates, limones y más, según temporada.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-preg">¿Puedo encargar por teléfono?<span class="mas">+</span></button>
+        <button type="button" class="faq-preg">¿Puedo encargar por teléfono?<span class="mas">+</span></button>
         <div class="faq-resp"><p>Claro. Llama a tu tienda más cercana o contacta con Nabil o Idris y te lo dejamos preparado para recoger.</p></div>
       </div>
     </div>
