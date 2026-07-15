@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Frutas Deliciosas — Fruta y verdura fresca en Zaragoza</title>
+<meta name="description" content="Frutas Deliciosas: 5 sucursales en Zaragoza. Fruta, verdura y alimentos frescos de primera calidad, todos los días.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --crema:#FFFBF2;
+  --blanco:#FFFFFF;
+  --verde:#3FA45B;
+  --verde-claro:#E4F5E8;
+  --naranja:#FF8A3D;
+  --naranja-claro:#FFE9D6;
+  --sandia:#FF5D73;
+  --sandia-claro:#FFE3E8;
+  --limon:#FFD84D;
+  --tinta:#233329;
+  --gris:#5C6B61;
+  --radius:22px;
+  --sombra:0 10px 30px rgba(35,51,41,.08);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--crema);color:var(--tinta);line-height:1.6;overflow-x:hidden}
+h1,h2,h3{font-family:'Fraunces',serif;line-height:1.12}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.container{width:min(1140px,92%);margin:0 auto}
+section{padding:84px 0}
+.etiqueta{display:inline-block;background:var(--verde-claro);color:var(--verde);font-weight:700;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;padding:.45em 1.1em;border-radius:999px;margin-bottom:14px}
+.titulo{font-size:clamp(1.9rem,4vw,2.9rem);font-weight:800;margin-bottom:14px}
+.subtexto{color:var(--gris);max-width:640px}
+
+/* ---------- NAVBAR ---------- */
+header{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(255,251,242,.85);backdrop-filter:blur(12px);border-bottom:1px solid rgba(35,51,41,.06)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{font-family:'Fraunces',serif;font-weight:800;font-size:1.35rem;display:flex;align-items:center;gap:.45em}
+.logo span{color:var(--verde)}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{font-weight:500;color:var(--gris);transition:color .2s}
+.nav-links a:hover{color:var(--verde)}
+.btn{display:inline-block;padding:.8em 1.7em;border-radius:999px;font-weight:700;transition:transform .2s,box-shadow .2s;cursor:pointer;border:none;font-size:1rem}
+.btn-login{background:var(--verde);color:#fff;box-shadow:0 6px 18px rgba(63,164,91,.35)}
+.btn-login:hover{transform:translateY(-2px)}
+.btn-naranja{background:var(--naranja);color:#fff;box-shadow:0 6px 18px rgba(255,138,61,.35)}
+.btn-fantasma{background:transparent;border:2px solid var(--verde);color:var(--verde)}
+.hamburguesa{display:none;background:none;border:none;cursor:pointer;padding:6px}
+.hamburguesa span{display:block;width:26px;height:3px;background:var(--tinta);margin:5px 0;border-radius:2px;transition:.3s}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:130px 0 80px;overflow:hidden;
+  background:linear-gradient(135deg,#FFFBF2 0%,#EAF7EE 55%,#FFF0E0 100%)}
+#escena3d{position:absolute;inset:0;z-index:0;pointer-events:none}
+.hero .container{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(2.4rem,5.5vw,4.2rem);font-weight:800;margin-bottom:18px}
+.hero h1 em{font-style:normal;color:var(--verde)}
+.hero p{font-size:1.12rem;color:var(--gris);max-width:520px;margin-bottom:30px}
+.hero-cta{display:flex;gap:16px;flex-wrap:wrap}
+.hero-visual{position:relative;text-align:center}
+.hero-visual .fruta{font-size:clamp(6rem,14vw,11rem);filter:drop-shadow(0 20px 30px rgba(255,138,61,.3))}
+.badge-flotante{position:absolute;background:#fff;border-radius:16px;box-shadow:var(--sombra);padding:12px 18px;font-weight:700;font-size:.9rem;display:flex;align-items:center;gap:8px}
+.badge-1{top:8%;left:0}
+.badge-2{bottom:12%;right:0}
+
+/* ---------- PRODUCTOS ---------- */
+.grid-productos{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:26px;margin-top:44px}
+.tarjeta-producto{background:var(--blanco);border-radius:var(--radius);overflow:hidden;box-shadow:var(--sombra);transition:transform .25s}
+.tarjeta-producto:hover{transform:translateY(-6px)}
+.tarjeta-producto .foto{height:190px;overflow:hidden;position:relative}
+.tarjeta-producto img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.tarjeta-producto:hover img{transform:scale(1.06)}
+.foto-fallback{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:3.4rem}
+.tarjeta-producto .info{padding:20px 22px 24px}
+.tarjeta-producto h3{font-size:1.2rem;margin-bottom:6px}
+.tarjeta-producto p{color:var(--gris);font-size:.92rem}
+.tag-fresco{display:inline-block;margin-top:12px;background:var(--sandia-claro);color:var(--sandia);font-size:.75rem;font-weight:700;padding:.35em .9em;border-radius:999px}
+
+/* ---------- SUCURSALES ---------- */
+.seccion-verde{background:var(--verde-claro)}
+.grid-sucursales{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:22px;margin-top:44px}
+.tarjeta-sucursal{background:#fff;border-radius:var(--radius);padding:28px 24px;box-shadow:var(--sombra);border-top:5px solid var(--verde)}
+.tarjeta-sucursal:nth-child(2n){border-top-color:var(--naranja)}
+.tarjeta-sucursal:nth-child(3n){border-top-color:var(--sandia)}
+.tarjeta-sucursal .icono{font-size:1.8rem;margin-bottom:10px}
+.tarjeta-sucursal h3{font-size:1.15rem;margin-bottom:6px}
+.tarjeta-sucursal p{color:var(--gris);font-size:.9rem}
+
+/* ---------- STATS ---------- */
+.banda-stats{background:linear-gradient(120deg,var(--verde),#2E8B4A);color:#fff;border-radius:28px;padding:56px 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:32px;text-align:center;box-shadow:0 18px 40px rgba(63,164,91,.3)}
+.stat .numero{font-family:'Fraunces',serif;font-size:clamp(2.2rem,5vw,3.4rem);font-weight:800}
+.stat .numero small{font-size:.55em}
+.stat .desc{opacity:.9;font-weight:500;margin-top:4px}
+
+/* ---------- CONTACTO ---------- */
+.grid-contacto{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px;margin-top:44px;max-width:720px;margin-left:auto;margin-right:auto}
+.tarjeta-contacto{background:#fff;border-radius:var(--radius);padding:36px 30px;text-align:center;box-shadow:var(--sombra)}
+.avatar{width:84px;height:84px;border-radius:50%;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-size:2.2rem;font-family:'Fraunces',serif;font-weight:800;color:#fff}
+.avatar-nabil{background:linear-gradient(135deg,var(--verde),#7CCB92)}
+.avatar-idris{background:linear-gradient(135deg,var(--naranja),var(--limon))}
+.tarjeta-contacto h3{font-size:1.35rem}
+.tarjeta-contacto .rol{color:var(--gris);font-size:.9rem;margin-bottom:14px}
+.tarjeta-contacto a.telefono{display:inline-block;font-weight:700;color:var(--verde);background:var(--verde-claro);padding:.6em 1.4em;border-radius:999px;transition:transform .2s}
+.tarjeta-contacto a.telefono:hover{transform:scale(1.05)}
+
+/* ---------- FOOTER ---------- */
+footer{background:var(--tinta);color:#DCE8DF;padding:48px 0 30px}
+.footer-grid{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.footer-grid .logo{color:#fff}
+.footer-links{display:flex;gap:22px;list-style:none;flex-wrap:wrap}
+.footer-links a{opacity:.8;font-size:.92rem}
+.footer-links a:hover{opacity:1}
+.copyright{text-align:center;margin-top:28px;font-size:.85rem;opacity:.6}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width:860px){
+  .hero .container{grid-template-columns:1fr;text-align:center}
+  .hero p{margin-left:auto;margin-right:auto}
+  .hero-cta{justify-content:center}
+  .hero-visual{order:-1;margin-top:-10px}
+  .badge-flotante{display:none}
+  .hamburguesa{display:block}
+  .nav-links{position:fixed;top:72px;right:-100%;flex-direction:column;background:#fff;width:min(320px,80vw);height:calc(100vh - 72px);padding:36px 30px;gap:22px;align-items:flex-start;box-shadow:-10px 0 30px rgba(0,0,0,.08);transition:right .3s}
+  .nav-links.abierto{right:0}
+  section{padding:60px 0}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<header>
+  <div class="container nav">
+    <a href="#inicio" class="logo">🍓 Frutas <span>Deliciosas</span></a>
+    <nav>
+      <ul class="nav-links" id="menu">
+        <li><a href="#productos">Productos</a></li>
+        <li><a href="#sucursales">Sucursales</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+        <li><a class="btn btn-login" id="btnLoginNav" href="#">Iniciar sesión</a></li>
+      </ul>
+    </nav>
+    <button class="hamburguesa" id="btnMenu" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="inicio">
+  <canvas id="escena3d" aria-hidden="true"></canvas>
+  <div class="container">
+    <div class="hero-texto">
+      <span class="etiqueta">Frescura de primera en Zaragoza</span>
+      <h1>Fruta y verdura <em>fresca</em>, todos los días</h1>
+      <p>Somos <strong>Frutas Deliciosas</strong>: vendedores de primera categoría de fruta, verdura y alimentos frescos, con <strong>5 sucursales en Zaragoza</strong>. Del campo a tu mesa, con la máxima calidad.</p>
+      <div class="hero-cta">
+        <a href="#productos" class="btn btn-naranja">Ver productos</a>
+        <a href="#" class="btn btn-fantasma btn-login-hero">Iniciar sesión</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="fruta" id="frutaHero">🍊</div>
+      <div class="badge-flotante badge-1">🥬 100% Fresco</div>
+      <div class="badge-flotante badge-2">🚚 5 sucursales</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PRODUCTOS ================= -->
+<section id="productos">
+  <div class="container">
+    <span class="etiqueta">Nuestros productos</span>
+    <h2 class="titulo">Lo mejor de la huerta, cada mañana</h2>
+    <p class="subtexto">Seleccionamos a diario la fruta y la verdura más fresca para nuestras tiendas de Zaragoza.</p>
+    <div class="grid-productos">
+      <article class="tarjeta-producto">
+        <div class="foto"><img loading="lazy" alt="Tomates frescos de temporada" src="https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=600&q=70" data-emoji="🍅"></div>
+        <div class="info"><h3>Tomates</h3><p>Tomate de temporada, jugoso y lleno de sabor.</p><span class="tag-fresco">Recién llegado</span></div>
+      </article>
+      <article class="tarjeta-producto">
+        <div class="foto"><img loading="lazy" alt="Naranjas valencianas" src="https://images.unsplash.com/photo-1547514701-42782101795e?w=600&q=70" data-emoji="🍊"></div>
+        <div class="info"><h3>Naranjas</h3><p>Dulces, perfectas para zumo cada mañana.</p><span class="tag-fresco">Favorito</span></div>
+      </article>
+      <article class="tarjeta-producto">
+        <div class="foto"><img loading="lazy" alt="Fresas frescas" src="https://images.unsplash.com/photo-1464965911861-746a04b4bca6?w=600&q=70" data-emoji="🍓"></div>
+        <div class="info"><h3>Fresas</h3><p>De Huelva, dulces y aromáticas.</p><span class="tag-fresco">Temporada</span></div>
+      </article>
+      <article class="tarjeta-producto">
+        <div class="foto"><img loading="lazy" alt="Pimientos de colores" src="https://images.unsplash.com/photo-1563565375-f3fdfdbefa83?w=600&q=70" data-emoji="🫑"></div>
+        <div class="info"><h3>Pimientos</h3><p>Rojos, verdes y amarillos, crujientes.</p><span class="tag-fresco">Recién llegado</span></div>
+      </article>
+      <article class="tarjeta-producto">
+        <div class="foto"><img loading="lazy" alt="Verduras de hoja verde" src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&q=70" data-emoji="🥬"></div>
+        <div class="info"><h3>Verdura de hoja</h3><p>Lechugas, espinacas y acelgas del día.</p><span class="tag-fresco">Del día</span></div>
+      </article>
+      <article class="tarjeta-producto">
+        <div class="foto"><img loading="lazy" alt="Manzanas rojas y verdes" src="https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=600&q=70" data-emoji="🍎"></div>
+        <div class="info"><h3>Manzanas</h3><p>Crujientes, en todas sus variedades.</p><span class="tag-fresco">Favorito</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SUCURSALES ================= -->
+<section class="seccion-verde" id="sucursales">
+  <div class="container">
+    <span class="etiqueta">Dónde estamos</span>
+    <h2 class="titulo">5 sucursales en Zaragoza</h2>
+    <p class="subtexto">Siempre tienes una tienda Frutas Deliciosas cerca de casa.</p>
+    <div class="grid-sucursales">
+      <div class="tarjeta-sucursal"><div class="icono">📍</div><h3>Centro</h3><p>Calle Ejemplo 12<br>L–S · 8:00–20:30</p></div>
+      <div class="tarjeta-sucursal"><div class="icono">📍</div><h3>Delicias</h3><p>Calle Ejemplo 34<br>L–S · 8:00–20:30</p></div>
+      <div class="tarjeta-sucursal"><div class="icono">📍</div><h3>Actur</h3><p>Calle Ejemplo 56<br>L–S · 8:00–20:30</p></div>
+      <div class="tarjeta-sucursal"><div class="icono">📍</div><h3>San José</h3><p>Calle Ejemplo 78<br>L–S · 8:00–20:30</p></div>
+      <div class="tarjeta-sucursal"><div class="icono">📍</div><h3>Universidad</h3><p>Calle Ejemplo 90<br>L–S · 8:00–20:30</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= NOSOTROS / STATS ================= -->
+<section id="nosotros">
+  <div class="container">
+    <span class="etiqueta">Por qué elegirnos</span>
+    <h2 class="titulo">Vendedores de primera, de verdad</h2>
+    <p class="subtexto" style="margin-bottom:44px">Calidad, cercanía y el mejor género de Zaragoza. Estos números hablan por nosotros.</p>
+    <div class="banda-stats">
+      <div class="stat"><div class="numero"><span class="contador" data-fin="5">0</span></div><div class="desc">Sucursales en Zaragoza</div></div>
+      <div class="stat"><div class="numero"><span class="contador" data-fin="15">0</span><small>+</small></div><div class="desc">Años de experiencia</div></div>
+      <div class="stat"><div class="numero"><span class="contador" data-fin="12000">0</span><small>+</small></div><div class="desc">Clientes felices</div></div>
+      <div class="stat"><div class="numero"><span class="contador" data-fin="100">0</span><small>%</small></div><div class="desc">Producto fresco</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACTO ================= -->
+<section class="seccion-verde" id="contacto">
+  <div class="container" style="text-align:center">
+    <span class="etiqueta">Contacto</span>
+    <h2 class="titulo">Habla con nosotros</h2>
+    <p class="subtexto" style="margin:0 auto">¿Pedidos, dudas o quieres trabajar con nosotros? Llámanos.</p>
+    <div class="grid-contacto">
+      <div class="tarjeta-contacto">
+        <div class="avatar avatar-nabil">N</div>
+        <h3>Nabil</h3>
+        <p class="rol">Gerente</p>
+        <!-- TELÉFONO NABIL: sustituir el número de abajo -->
+        <a class="telefono" href="tel:+34600000000">📞 +34 6XX XXX XXX</a>
+      </div>
+      <div class="tarjeta-contacto">
+        <div class="avatar avatar-idris">I</div>
+        <h3>Idris</h3>
+        <p class="rol">Atención al cliente</p>
+        <!-- TELÉFONO IDRIS: sustituir el número de abajo -->
+        <a class="telefono" href="tel:+34600000000">📞 +34 6XX XXX XXX</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="logo">🍓 Frutas <span style="color:#7CCB92">Deliciosas</span></div>
+      <ul class="footer-links">
+        <li><a href="#productos">Productos</a></li>
+        <li><a href="#sucursales">Sucursales</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </div>
+    <div class="copyright">© 2026 Frutas Deliciosas · Zaragoza, España</div>
+  </div>
+</footer>
+
+<!-- ================= LIBRERÍAS ================= -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js" integrity="sha384-qOkzR5Ke/XkQxuGVJ9hpFEpDlcoLtWwVYhnJf06cLIZa2vaIptSqaubivErzmD5O" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.min.js" integrity="sha384-oLmuahJgYYR1aWgZwdMQQ2AClE6A2eEwV2x1Z7cbIHehfkkmommQLH3wX1NDEszb" crossorigin="anonymous"></script>
+
+<script>
+/* ============================================================
+   CONFIGURACIÓN — cambia aquí la URL de login (subdominio)
+   ============================================================ */
+const LOGIN_URL = "https://mohsin.se/veg_shop_manager/";
+
+document.getElementById("btnLoginNav").href = LOGIN_URL;
+document.querySelectorAll(".btn-login-hero").forEach(b => b.href = LOGIN_URL);
+
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ---------- Menú móvil ---------- */
+const btnMenu = document.getElementById("btnMenu");
+const menu = document.getElementById("menu");
+btnMenu.addEventListener("click", () => menu.classList.toggle("abierto"));
+menu.querySelectorAll("a").forEach(a => a.addEventListener("click", () => menu.classList.remove("abierto")));
+
+/* ---------- Fallback de imágenes ---------- */
+document.querySelectorAll(".tarjeta-producto img").forEach(img => {
+  img.addEventListener("error", () => {
+    const div = document.createElement("div");
+    div.className = "foto-fallback";
+    div.style.background = "linear-gradient(135deg,#E4F5E8,#FFE9D6)";
+    div.textContent = img.dataset.emoji || "🥗";
+    img.replaceWith(div);
+  });
+});
+
+/* ============================================================
+   THREE.JS — orbes flotantes en el hero
+   ============================================================ */
+(function initThree(){
+  if (reduceMotion || typeof THREE === "undefined") return;
+  const canvas = document.getElementById("escena3d");
+  const renderer = new THREE.WebGLRenderer({ canvas, alpha:true, antialias:true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.75));
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(55, 1, .1, 100);
+  camera.position.z = 10;
+
+  scene.add(new THREE.AmbientLight(0xffffff, .9));
+  const luz = new THREE.DirectionalLight(0xffffff, .8);
+  luz.position.set(4, 6, 8);
+  scene.add(luz);
+
+  const colores = [0x3FA45B, 0xFF8A3D, 0xFF5D73, 0xFFD84D, 0x7CCB92];
+  const orbes = [];
+  for (let i = 0; i < 10; i++){
+    const geo = new THREE.IcosahedronGeometry(.35 + Math.random() * .5, 0);
+    const mat = new THREE.MeshStandardMaterial({
+      color: colores[i % colores.length], roughness:.4, metalness:.05,
+      transparent:true, opacity:.85, flatShading:true
+    });
+    const m = new THREE.Mesh(geo, mat);
+    m.position.set((Math.random() - .5) * 14, (Math.random() - .5) * 8, (Math.random() - .5) * 4);
+    m.userData = { v: .15 + Math.random() * .3, f: Math.random() * Math.PI * 2 };
+    scene.add(m); orbes.push(m);
+  }
+
+  function resize(){
+    const w = canvas.clientWidth, h = canvas.clientHeight;
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+  }
+  resize();
+  window.addEventListener("resize", resize);
+
+  const reloj = new THREE.Clock();
+  (function animar(){
+    requestAnimationFrame(animar);
+    const t = reloj.getElapsedTime();
+    orbes.forEach(o => {
+      o.rotation.x += .003; o.rotation.y += .004;
+      o.position.y += Math.sin(t * o.userData.v + o.userData.f) * .0035;
+    });
+    renderer.render(scene, camera);
+  })();
+})();
+
+/* ============================================================
+   GSAP — entrada del hero y reveals al hacer scroll
+   ============================================================ */
+if (!reduceMotion && typeof gsap !== "undefined"){
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.timeline()
+    .from(".hero-texto .etiqueta", { y:30, opacity:0, duration:.6, ease:"power3.out" })
+    .from(".hero-texto h1",        { y:40, opacity:0, duration:.7, ease:"power3.out" }, "-=.3")
+    .from(".hero-texto p",         { y:30, opacity:0, duration:.6 }, "-=.35")
+    .from(".hero-cta a",           { y:20, opacity:0, duration:.5, stagger:.12 }, "-=.3")
+    .from(".hero-visual",          { scale:.7, opacity:0, duration:.8, ease:"back.out(1.6)" }, "-=.6")
+    .from(".badge-flotante",       { y:20, opacity:0, stagger:.15 }, "-=.4");
+
+  gsap.to("#frutaHero", { y:-18, duration:2.4, yoyo:true, repeat:-1, ease:"sine.inOut" });
+
+  document.querySelectorAll("section:not(.hero)").forEach(sec => {
+    gsap.from(sec.querySelectorAll(".etiqueta, .titulo, .subtexto"), {
+      y:36, opacity:0, duration:.7, stagger:.12, ease:"power3.out",
+      scrollTrigger:{ trigger:sec, start:"top 78%" }
+    });
+  });
+  gsap.from(".tarjeta-producto", {
+    y:50, opacity:0, duration:.6, stagger:.1, ease:"power2.out",
+    scrollTrigger:{ trigger:".grid-productos", start:"top 82%" }
+  });
+  gsap.from(".tarjeta-sucursal", {
+    y:40, opacity:0, duration:.55, stagger:.1,
+    scrollTrigger:{ trigger:".grid-sucursales", start:"top 84%" }
+  });
+  gsap.from(".tarjeta-contacto", {
+    y:40, opacity:0, duration:.6, stagger:.15,
+    scrollTrigger:{ trigger:".grid-contacto", start:"top 84%" }
+  });
+}
+
+/* ============================================================
+   ANIME.JS — contadores animados de la banda de stats
+   ============================================================ */
+(function initContadores(){
+  const banda = document.querySelector(".banda-stats");
+  if (!banda) return;
+  let hecho = false;
+  function lanzar(){
+    if (hecho) return; hecho = true;
+    document.querySelectorAll(".contador").forEach(el => {
+      const fin = parseInt(el.dataset.fin, 10);
+      if (reduceMotion || typeof anime === "undefined"){
+        el.textContent = fin.toLocaleString("es-ES"); return;
+      }
+      const obj = { n: 0 };
+      anime({
+        targets: obj, n: fin, round: 1,
+        duration: 1800, easing: "easeOutExpo",
+        update: () => el.textContent = obj.n.toLocaleString("es-ES")
+      });
+    });
+  }
+  const obs = new IntersectionObserver(es => {
+    es.forEach(e => { if (e.isIntersecting) lanzar(); });
+  }, { threshold: .35 });
+  obs.observe(banda);
+
+  /* pulso sutil en botones con anime.js */
+  if (!reduceMotion && typeof anime !== "undefined"){
+    document.querySelectorAll(".btn").forEach(btn => {
+      btn.addEventListener("mouseenter", () => {
+        anime.remove(btn);
+        anime({ targets: btn, scale: [1, 1.05, 1], duration: 450, easing: "easeOutQuad" });
+      });
+    });
+  }
+})();
+</script>
+</body>
+</html>
