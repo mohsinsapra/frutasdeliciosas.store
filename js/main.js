@@ -6,7 +6,7 @@
 /* ------------------------------------------------------------
    CONFIGURACIÓN — cambia aquí la URL de login (subdominio/app)
    ------------------------------------------------------------ */
-const LOGIN_URL = "https://mohsin.se/veg_shop_manager/";
+const LOGIN_URL = "https://app.frutasdeliciosas.store/";
 
 /* TELÉFONOS — sustituir por los números reales */
 const TEL_NABIL = "+34602178586"; // <-- TELÉFONO NABIL
