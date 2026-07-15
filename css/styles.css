@@ -93,8 +93,14 @@ header.con-sombra{box-shadow:0 8px 24px rgba(35,51,41,.08)}
 .hero-visual{position:relative;display:flex;align-items:center;justify-content:center;min-height:380px}
 .plato{position:relative;width:min(360px,80vw);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff,#FFF3E2);box-shadow:var(--sombra-fuerte);display:flex;align-items:center;justify-content:center}
 .plato .fruta-central{font-size:clamp(5.5rem,11vw,8.5rem);filter:drop-shadow(0 18px 26px rgba(255,138,61,.35))}
-.orbita{position:absolute;inset:-34px;border:2px dashed rgba(63,164,91,.35);border-radius:50%}
-.orbita .sat{position:absolute;font-size:2rem;top:50%;left:50%;margin:-18px}
+.orbita{position:absolute;inset:-34px;border:2px dashed rgba(63,164,91,.35);border-radius:50%;animation:orbitar 26s linear infinite}
+.orbita .sat{position:absolute;width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-size:2rem;filter:drop-shadow(0 6px 10px rgba(35,51,41,.18));animation:contra-orbitar 26s linear infinite}
+.sat-1{top:-20px;left:50%;margin-left:-20px}
+.sat-2{bottom:-20px;left:50%;margin-left:-20px}
+.sat-3{top:50%;right:-20px;margin-top:-20px}
+@keyframes orbitar{to{transform:rotate(360deg)}}
+@keyframes contra-orbitar{to{transform:rotate(-360deg)}}
+@media (prefers-reduced-motion:reduce){.orbita,.orbita .sat{animation:none}}
 .badge-flotante{position:absolute;background:#fff;border-radius:16px;box-shadow:var(--sombra);padding:12px 18px;font-weight:700;font-size:.9rem;display:flex;align-items:center;gap:8px;z-index:3}
 .badge-1{top:4%;left:-4%}
 .badge-2{bottom:10%;right:-6%}
