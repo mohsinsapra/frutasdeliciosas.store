@@ -200,19 +200,19 @@ document.querySelectorAll("img[data-emoji]").forEach(img => {
 
   /* --- entrada del hero --- */
   gsap.timeline({ delay: 0.9 })
-    .from(".hero-texto .etiqueta", { y: 30, opacity: 0, duration: 0.6, ease: "power3.out" })
-    .from(".hero-texto h1", { y: 46, opacity: 0, duration: 0.75, ease: "power3.out" }, "-=0.3")
-    .from(".hero-texto p", { y: 30, opacity: 0, duration: 0.6 }, "-=0.35")
-    .from(".hero-cta a", { y: 22, opacity: 0, duration: 0.5, stagger: 0.12 }, "-=0.3")
-    .from(".hero-mini-stats .mini", { y: 18, opacity: 0, stagger: 0.1 }, "-=0.25")
-    .from(".plato", { scale: 0.6, opacity: 0, duration: 0.9, ease: "back.out(1.5)" }, "-=0.8")
-    .from(".badge-flotante", { scale: 0, opacity: 0, stagger: 0.14, ease: "back.out(2)" }, "-=0.4");
+    .from(".hero-texto .etiqueta", { y: 34, opacity: 0, duration: 0.9, ease: "power3.out" })
+    .from(".hero-texto h1", { y: 54, opacity: 0, filter: "blur(6px)", clearProps: "filter", duration: 1.2, ease: "power3.out" }, "-=0.5")
+    .from(".hero-texto p", { y: 34, opacity: 0, duration: 0.9, ease: "power3.out" }, "-=0.65")
+    .from(".hero-cta a", { y: 26, opacity: 0, duration: 0.8, stagger: 0.16, ease: "power3.out" }, "-=0.5")
+    .from(".hero-mini-stats .mini", { y: 20, opacity: 0, stagger: 0.14, duration: 0.7 }, "-=0.4")
+    .from(".plato", { scale: 0.55, opacity: 0, duration: 1.4, ease: "back.out(1.3)" }, "-=1.2")
+    .from(".badge-flotante", { scale: 0, opacity: 0, stagger: 0.2, duration: 0.8, ease: "back.out(1.8)" }, "-=0.7");
 
-  /* flotación continua */
-  gsap.to(".plato", { y: -16, duration: 2.6, yoyo: true, repeat: -1, ease: "sine.inOut" });
-  gsap.to(".badge-1", { y: -12, duration: 2.2, yoyo: true, repeat: -1, ease: "sine.inOut" });
-  gsap.to(".badge-2", { y: 12, duration: 2.8, yoyo: true, repeat: -1, ease: "sine.inOut", delay: 0.4 });
-  gsap.to(".badge-3", { y: -10, duration: 2.4, yoyo: true, repeat: -1, ease: "sine.inOut", delay: 0.8 });
+  /* flotación continua, pausada y orgánica */
+  gsap.to(".plato", { y: -18, duration: 3.6, yoyo: true, repeat: -1, ease: "sine.inOut" });
+  gsap.to(".badge-1", { y: -14, duration: 3.1, yoyo: true, repeat: -1, ease: "sine.inOut" });
+  gsap.to(".badge-2", { y: 14, duration: 3.9, yoyo: true, repeat: -1, ease: "sine.inOut", delay: 0.5 });
+  gsap.to(".badge-3", { y: -12, duration: 3.4, yoyo: true, repeat: -1, ease: "sine.inOut", delay: 1 });
   gsap.to(".orbita", { rotation: 360, duration: 26, repeat: -1, ease: "none", transformOrigin: "50% 50%" });
 
   /* hero parallax al hacer scroll */
@@ -225,19 +225,36 @@ document.querySelectorAll("img[data-emoji]").forEach(img => {
     scrollTrigger: { trigger: ".hero", start: "30% top", end: "bottom top", scrub: true }
   });
 
-  /* --- marquee infinito --- */
+  /* --- marquee infinito (más pausado) --- */
   const pista = document.querySelector(".marquee-pista");
   if (pista) {
     pista.innerHTML += pista.innerHTML; /* duplicar para bucle perfecto */
-    gsap.to(pista, { xPercent: -50, duration: 22, repeat: -1, ease: "none" });
+    gsap.to(pista, { xPercent: -50, duration: 34, repeat: -1, ease: "none" });
   }
 
-  /* --- reveals por sección --- */
+  /* --- palabras de fondo: se deslizan con el scroll --- */
+  gsap.utils.toArray(".palabra-fondo").forEach(p => {
+    gsap.fromTo(p, { xPercent: 5 }, {
+      xPercent: -14, ease: "none",
+      scrollTrigger: { trigger: p.parentElement, start: "top bottom", end: "bottom top", scrub: 1.4 }
+    });
+  });
+
+  /* --- blobs decorativos: deriva lenta con el scroll --- */
+  gsap.utils.toArray(".blob").forEach((b, i) => {
+    gsap.fromTo(b, { y: 70 }, {
+      y: -70, ease: "none",
+      scrollTrigger: { trigger: b.parentElement, start: "top bottom", end: "bottom top", scrub: 1.8 + i * 0.4 }
+    });
+  });
+
+  /* --- reveals por sección: lentos, con blur que se disipa --- */
   document.querySelectorAll("section:not(.hero):not(.ofertas)").forEach(sec => {
     const cab = sec.querySelectorAll(".etiqueta, .titulo, .subtexto");
     if (cab.length) {
       gsap.from(cab, {
-        y: 36, opacity: 0, duration: 0.7, stagger: 0.12, ease: "power3.out",
+        y: 44, opacity: 0, filter: "blur(8px)", duration: 1.15, stagger: 0.18, ease: "power3.out",
+        clearProps: "filter",
         scrollTrigger: { trigger: sec, start: "top 78%" }
       });
     }
@@ -246,20 +263,29 @@ document.querySelectorAll("img[data-emoji]").forEach(img => {
     const els = document.querySelectorAll(sel);
     if (!els.length) return;
     gsap.from(els, {
-      y: 46, opacity: 0, duration: 0.6, stagger: 0.09, ease: "power2.out",
+      y: 56, opacity: 0, duration: 1.05, stagger: 0.14, ease: "power3.out",
       scrollTrigger: { trigger, start: "top 84%" }, ...extra
     });
   };
   reveal(".tarjeta-producto", ".grid-productos");
   reveal(".tarjeta-sucursal", ".grid-sucursales");
-  reveal(".paso", ".proceso-grid", { stagger: 0.15 });
-  reveal(".tarjeta-contacto", ".grid-contacto", { stagger: 0.15 });
-  reveal(".faq-item", ".faq-lista", { y: 30 });
+  reveal(".paso", ".proceso-grid", { stagger: 0.22 });
+  reveal(".tarjeta-contacto", ".grid-contacto", { stagger: 0.22 });
+  reveal(".faq-item", ".faq-lista", { y: 34 });
+  reveal(".valor", ".valores-mini", { y: 34, stagger: 0.16 });
 
-  /* fotos de "sobre nosotros" con parallax cruzado */
-  gsap.from(".foto-a", { y: 70, opacity: 0, duration: 0.8, scrollTrigger: { trigger: ".sobre-fotos", start: "top 80%" } });
-  gsap.from(".foto-b", { y: -50, opacity: 0, duration: 0.8, delay: 0.15, scrollTrigger: { trigger: ".sobre-fotos", start: "top 80%" } });
-  gsap.from(".sello-experiencia", { scale: 0, duration: 0.7, ease: "back.out(2)", scrollTrigger: { trigger: ".sobre-fotos", start: "top 70%" } });
+  /* fotos de "sobre nosotros": entrada suave + parallax continuo */
+  gsap.from(".foto-a", { y: 90, opacity: 0, duration: 1.3, ease: "power3.out", scrollTrigger: { trigger: ".sobre-fotos", start: "top 82%" } });
+  gsap.from(".foto-b", { y: -70, opacity: 0, duration: 1.3, ease: "power3.out", delay: 0.2, scrollTrigger: { trigger: ".sobre-fotos", start: "top 82%" } });
+  gsap.from(".sobre-fotos .foto img", { scale: 1.22, duration: 1.8, ease: "power2.out", stagger: 0.15, scrollTrigger: { trigger: ".sobre-fotos", start: "top 82%" } });
+  gsap.from(".sello-experiencia", { scale: 0, rotation: -14, duration: 1, ease: "back.out(1.8)", scrollTrigger: { trigger: ".sobre-fotos", start: "top 70%" } });
+  /* parallax cruzado mientras se hace scroll */
+  gsap.to(".foto-a", { y: -44, ease: "none", scrollTrigger: { trigger: "#nosotros", start: "top bottom", end: "bottom top", scrub: 1.2 } });
+  gsap.to(".foto-b", { y: 40, ease: "none", scrollTrigger: { trigger: "#nosotros", start: "top bottom", end: "bottom top", scrub: 1.2 } });
+  gsap.from(".lista-check li", {
+    x: -34, opacity: 0, duration: 0.9, stagger: 0.14, ease: "power3.out",
+    scrollTrigger: { trigger: ".lista-check", start: "top 86%" }
+  });
 
   /* --- sección OFERTAS: scroll horizontal fijado (solo escritorio) --- */
   ScrollTrigger.matchMedia({
@@ -278,9 +304,9 @@ document.querySelectorAll("img[data-emoji]").forEach(img => {
     }
   });
 
-  /* banda CTA con zoom sutil */
+  /* banda CTA con zoom sutil y lento */
   gsap.from(".cta-banner", {
-    scale: 0.92, opacity: 0, duration: 0.8, ease: "power2.out",
+    scale: 0.9, opacity: 0, duration: 1.3, ease: "power3.out",
     scrollTrigger: { trigger: ".cta-banner", start: "top 82%" }
   });
 })();
